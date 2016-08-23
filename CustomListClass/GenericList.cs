@@ -10,6 +10,16 @@ namespace CustomListClass
     public class GenericList<T> : IEnumerable<T>
     {
         private T[] initialList;
+        int count;
+
+        public int Count
+        {
+            get
+            {
+                return initialList.Count();
+            }
+            
+        }
 
         public GenericList(T[] array)
         {
@@ -28,6 +38,26 @@ namespace CustomListClass
             initialList = newArray;
         }
 
+        //public static string operator + (T firstItem, T secondItem)
+        //{
+        //    string newItem;
+        //    newItem = firstItem.ToString() + secondItem.ToString();
+        //    return newItem; 
+        //}
+
+        //public T[] Zipper(T[] firstItem, T[] secondItem)
+        //{
+
+        //    T[] newArray = new T[Math.Min(firstItem.Length, secondItem.Length)];
+
+        //    for (int i = 0; i < newArray.Length; i++)
+        //    {
+        //        newArray[i] = firstItem[i] + secondItem[i];
+        //    }
+
+        //    return newArray;
+        //}
+
         public void Remove(T itemToRemove)
         {
             int counter = 0;
@@ -43,6 +73,18 @@ namespace CustomListClass
             }
             initialList = newArray;
         }
+
+        public override string ToString()
+        {
+            string newString = "";
+            for (int i = 0; i < initialList.Length; i++)
+            {
+                newString += initialList[i];
+            }
+            return newString;
+        }
+
+
 
         IEnumerator<T[]> GetEnumerator()
         {

@@ -21,6 +21,7 @@ namespace CustomListClass
                 Console.WriteLine(category);
 
             }
+            Console.WriteLine(stringList.Count);
 
             stringList.Add("country");
             stringList.Add("dob");
@@ -30,6 +31,8 @@ namespace CustomListClass
                 Console.WriteLine(category);
 
             }
+
+            Console.WriteLine(stringList.Count);
             stringList.Remove("age");
             stringList.Remove("city");
 
@@ -38,6 +41,17 @@ namespace CustomListClass
                 Console.WriteLine(category);
            
             }
+
+            Console.WriteLine(stringList.ToString());
+
+            Console.WriteLine(stringList.Count);
+
+            //GenericList<int> numbers1 = new GenericList<int>(new int[] { 1, 2, 3, 4, 5 });
+            //GenericList<int> numbers2 = new GenericList<int>(new int[] { 6, 7, 8, 9, 10 });
+            //GenericList<int> numbers3 = new GenericList<int>();
+
+            //Console.WriteLine(numbers1.Add(numbers1, numbers2));
+
 
 
             Console.ReadLine();
