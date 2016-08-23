@@ -15,20 +15,32 @@ namespace CustomListClass
         {
 
             GenericList<string> stringList = new GenericList<string>(new string[] { "name", "city", "address", "state", "age" });
-            
+
+            foreach (var category in stringList)
+            {
+                Console.WriteLine(category);
+
+            }
 
             stringList.Add("country");
             stringList.Add("dob");
 
+            foreach (var category in stringList)
+            {
+                Console.WriteLine(category);
+
+            }
             stringList.Remove("age");
             stringList.Remove("city");
 
+            foreach (var category in stringList)
+            {
+                Console.WriteLine(category);
+           
+            }
+
+
             Console.ReadLine();
-            //numberList.Add(itemToAdd);
-            //Console.WriteLine(stringList);
-            //Console.ReadKey();
-            //itemToRemove = 2;
-            //nameList.Remove(itemToRemove);
         }
     }
 }

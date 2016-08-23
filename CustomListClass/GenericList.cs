@@ -11,9 +11,9 @@ namespace CustomListClass
     {
         private T[] initialList;
 
-        public GenericList(T[] size)
+        public GenericList(T[] array)
         {
-            initialList = size;
+            initialList = array;
 
 
         }
@@ -30,15 +30,21 @@ namespace CustomListClass
 
         public void Remove(T itemToRemove)
         {
+            int counter = 0;
             T[] newArray = new T[initialList.Length - 1];
-            for (int i = 0; i < initialList.Length - 1; i++)
+            for (int i = 0; i < initialList.Length; i++)
             {
-                newArray[i] = initialList[i];
+                
+                if (!initialList[i].Equals(itemToRemove))
+                {
+                    newArray[counter] = initialList[i];
+                    counter++;             
+                }
             }
             initialList = newArray;
         }
 
-        public IEnumerator<T[]> GetEnumerator()
+        IEnumerator<T[]> GetEnumerator()
         {
             Console.WriteLine("T[].GetEnumerator");
             for (int i = 0; i < initialList.Count(); i++)
