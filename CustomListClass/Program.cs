@@ -15,7 +15,8 @@ namespace CustomListClass
         {
 
             GenericList<string> stringList = new GenericList<string>(new string[] { "name", "city", "address", "state", "age" });
-
+            Console.WriteLine("Initial List");
+           
             foreach (var category in stringList)
             {
                 Console.WriteLine(category);
@@ -25,20 +26,20 @@ namespace CustomListClass
             //Count property
             Console.WriteLine(stringList.Count);
 
-            //Add item to T[]
+            Console.WriteLine("Add items to list");
             stringList.Add("country");
             stringList.Add("dob");
 
-            foreach (var category in stringList)
+            foreach (var value in stringList)
             {
-                Console.WriteLine(category);
+                Console.WriteLine(value);
 
             }
 
             //Count property
             Console.WriteLine(stringList.Count);
 
-            //Remove item from T[]
+            Console.WriteLine("Remove 2 items from list");
             stringList.Remove("age");
             stringList.Remove("city");
 
@@ -48,16 +49,13 @@ namespace CustomListClass
            
             }
 
-            //ToString function
-            Console.WriteLine(stringList.ToString());
+            Console.WriteLine("ToString function with string array");
+            Console.WriteLine(stringList.Count + " " + stringList);
 
+            Console.WriteLine("ToString function with integer array");
             GenericList<int> numbersOriginal= new GenericList<int>(new int[] { 1, 2, 3 });
-            Console.WriteLine(numbersOriginal.ToString());
+            Console.WriteLine(numbersOriginal.Count + " " + numbersOriginal);
 
-
-
-            //Count property
-            Console.WriteLine(stringList.Count);
 
             Console.WriteLine("\nOperator + overload");
             GenericList<int> numbers1 = new GenericList<int>(new int[] { 1, 2, 3, 4, 5 });
@@ -85,6 +83,23 @@ namespace CustomListClass
             Console.WriteLine("List of even numbers: {0}", evenNumbers);
             Console.WriteLine("First 10 numbers minus even numbers: {0}", oddNumbers);
 
+
+            Console.WriteLine("\nZipper function");
+            GenericList<string> zipList1 = new GenericList<string>(new string[] { "one", "two", "three", "four","five" });
+            GenericList<string> zipList2 = new GenericList<string>(new string[] { "10", "20", "30" });
+            GenericList<int> zipList3 = new GenericList<int>(new int[] { 1, 2, 3, 4, 5 });
+            GenericList<int> zipList4 = new GenericList<int>(new int[] { 6, 7, 8, 9, 10 });
+            //GenericList<string> zipListResult = new GenericList<string>(new string[Math.Min(zipList1.Count, zipList2.Count)]);
+            Console.WriteLine(zipList1);
+            Console.WriteLine(zipList2);
+            zipList1.Zip(zipList2);
+            Console.WriteLine(zipList1);
+
+
+            Console.WriteLine(zipList3);
+            Console.WriteLine(zipList4);
+            zipList3.Zip(zipList4);
+            Console.WriteLine(zipList3);
             Console.ReadLine();
         }
     }

@@ -9,7 +9,7 @@ namespace CustomListClass
 {
     public class GenericList<T> : IEnumerable<T>
     {
-        private T[] initialList;
+        T[] initialList;
         int count;
 
         public int Count
@@ -29,11 +29,23 @@ namespace CustomListClass
         }
         public void Add(T itemToAdd)
         {
-            T[] newArray = new T[initialList.Length + 1];
-            for (int i = 0; i < initialList.Length; i++)
+            T[] newArray = new T[Count + 1];
+            int counter = 0;
+            foreach (var value in initialList)
             {
-                newArray[i] = initialList[i];
+                newArray[counter] = value;
+                counter++;
             }
+            
+            //    newArray[i] = initialList[i];
+            //}           
+            
+            //    newArray[i] = value;
+            //}
+            //for (int i = 0; i < Count; i++)
+            //{
+            //    newArray[i] = initialList[i];
+            //}
             newArray[newArray.Length - 1] = itemToAdd;
             initialList = newArray;
         }
@@ -41,15 +53,25 @@ namespace CustomListClass
         public static GenericList<T> operator +(GenericList<T> firstItem, GenericList<T> secondItem)
         {
             GenericList<T> newArray = new GenericList<T>(new T[0]);
-            for (int i = 0; i < firstItem.initialList.Length; i++)
+
+            foreach (var value in firstItem)
             {
-                newArray.Add(firstItem.initialList[i]);
+                newArray.Add(value);
             }
 
-            for (int i = 0; i < secondItem.initialList.Length; i++)
+            foreach (var value in secondItem)
             {
-                newArray.Add(secondItem.initialList[i]);
+                newArray.Add(value);
             }
+            //for (int i = 0; i < firstItem.Count; i++)
+            //{
+            //    newArray.Add(firstItem.initialList[i]);
+            //}
+
+            //for (int i = 0; i < secondItem.Count; i++)
+            //{
+            //    newArray.Add(secondItem.initialList[i]);
+            //}
             return newArray;
         }
     
@@ -57,68 +79,87 @@ namespace CustomListClass
         {
             GenericList<T> newArray = new GenericList<T>(new T[0]);
             newArray += firstItem;
-            for (int i = 0; i < secondItem.initialList.Length; i++)
+
+            foreach (var value in secondItem)
             {
-                newArray.Remove(secondItem.initialList[i]);
+                newArray.Remove(value);
             }
+
+            //for (int i = 0; i < secondItem.Count; i++)
+            //{
+            //    newArray.Remove(secondItem.initialList[i]);
+            //}
             return newArray;
         }
 
-        //public T[] Zip(T[] firstItem, T[] secondItem)
-        //{
+        public void Zip(GenericList<T> secondItem)
+        {
+            GenericList<T> newList = new GenericList<T>(new T[0]);
 
-        //    T[] newArray = new T[Math.Min(firstItem.Length, secondItem.Length)];
+            for (int i = 0; i < Count; i++)
+            {
+                if (i < Count)
+                {
+                    newList.Add(initialList[i]);
+                }
 
-        //    for (int i = 0; i < newArray.Length; i++)
-        //    {
-        //        newArray[i] = firstItem[i] + secondItem[i];
-        //    }
 
-        //    return newArray;
-        //}
+                if (i < secondItem.Count)
+                {
+                    newList.Add(secondItem.initialList[i]);
+
+                }
+            }
+            initialList = newList.initialList;
+        }
 
         public void Remove(T itemToRemove)
 
         {
             int counter = 0;
-            T[] newArray = new T[initialList.Length - 1];
-            for (int i = 0; i < initialList.Length; i++)
+            T[] newArray = new T[Count - 1];
+
+            foreach (var value in initialList)
             {
-                
-                if (!initialList[i].Equals(itemToRemove))
+                if (!value.Equals(itemToRemove))
                 {
-                    newArray[counter] = initialList[i];
-                    counter++;             
+                    newArray[counter] = value;
+                    counter++;
                 }
             }
+
+            //for (int i = 0; i < Count; i++)
+            //{
+
+            //    if (!initialList[i].Equals(itemToRemove))
+            //    {
+            //        newArray[counter] = initialList[i];
+            //        counter++;             
+            //    }
+            //}
             initialList = newArray;
         }
 
         public override string ToString()
         {
             string newString = "";
-            for (int i = 0; i < initialList.Length; i++)
+
+            foreach(var value in initialList)
             {
-                newString += initialList[i];
+                newString += value;
             }
+            //for (int i = 0; i < Count; i++)
+            //{
+            //    newString += initialList[i];
+            //}
             return newString;
         }
 
 
 
-        //IEnumerator<T[]> GetEnumerator()
-        //{
-        //    Console.WriteLine("T[].GetEnumerator");
-        //    for (int i = 0; i < initialList.Count(); i++)
-        //    {
-        //        yield return initialList;
-        //    }
-        //}
-
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            Console.WriteLine("<T>.GetEnumerator");
-            for (int i = 0; i < initialList.Count(); i++)
+            for (int i = 0; i < Count; i++)
             {
                 yield return initialList[i];
             }
@@ -127,8 +168,7 @@ namespace CustomListClass
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            Console.WriteLine("GetEnumerator");
-            for (int i = 0; i < initialList.Count(); i++)
+            for (int i = 0; i < Count; i++)
             {
                 yield return initialList[i];
             }
