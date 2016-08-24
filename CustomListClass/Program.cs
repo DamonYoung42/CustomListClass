@@ -89,7 +89,7 @@ namespace CustomListClass
             GenericList<string> zipList2 = new GenericList<string>(new string[] { "10", "20", "30" });
             GenericList<int> zipList3 = new GenericList<int>(new int[] { 1, 2, 3, 4, 5 });
             GenericList<int> zipList4 = new GenericList<int>(new int[] { 6, 7, 8, 9, 10 });
-            //GenericList<string> zipListResult = new GenericList<string>(new string[Math.Min(zipList1.Count, zipList2.Count)]);
+
             Console.WriteLine(zipList1);
             Console.WriteLine(zipList2);
             zipList1.Zip(zipList2);

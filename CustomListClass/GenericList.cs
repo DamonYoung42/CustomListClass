@@ -36,16 +36,6 @@ namespace CustomListClass
                 newArray[counter] = value;
                 counter++;
             }
-            
-            //    newArray[i] = initialList[i];
-            //}           
-            
-            //    newArray[i] = value;
-            //}
-            //for (int i = 0; i < Count; i++)
-            //{
-            //    newArray[i] = initialList[i];
-            //}
             newArray[newArray.Length - 1] = itemToAdd;
             initialList = newArray;
         }
@@ -63,15 +53,7 @@ namespace CustomListClass
             {
                 newArray.Add(value);
             }
-            //for (int i = 0; i < firstItem.Count; i++)
-            //{
-            //    newArray.Add(firstItem.initialList[i]);
-            //}
 
-            //for (int i = 0; i < secondItem.Count; i++)
-            //{
-            //    newArray.Add(secondItem.initialList[i]);
-            //}
             return newArray;
         }
     
@@ -85,10 +67,6 @@ namespace CustomListClass
                 newArray.Remove(value);
             }
 
-            //for (int i = 0; i < secondItem.Count; i++)
-            //{
-            //    newArray.Remove(secondItem.initialList[i]);
-            //}
             return newArray;
         }
 
@@ -128,15 +106,6 @@ namespace CustomListClass
                 }
             }
 
-            //for (int i = 0; i < Count; i++)
-            //{
-
-            //    if (!initialList[i].Equals(itemToRemove))
-            //    {
-            //        newArray[counter] = initialList[i];
-            //        counter++;             
-            //    }
-            //}
             initialList = newArray;
         }
 
@@ -148,10 +117,6 @@ namespace CustomListClass
             {
                 newString += value;
             }
-            //for (int i = 0; i < Count; i++)
-            //{
-            //    newString += initialList[i];
-            //}
             return newString;
         }
 
