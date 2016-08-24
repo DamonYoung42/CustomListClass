@@ -16,7 +16,7 @@ namespace CustomListClass
         {
             get
             {
-                return initialList.Count();
+                return initialList.Length;
             }
             
         }
@@ -38,14 +38,33 @@ namespace CustomListClass
             initialList = newArray;
         }
 
-        //public static string operator + (T firstItem, T secondItem)
-        //{
-        //    string newItem;
-        //    newItem = firstItem.ToString() + secondItem.ToString();
-        //    return newItem; 
-        //}
+        public static GenericList<T> operator +(GenericList<T> firstItem, GenericList<T> secondItem)
+        {
+            GenericList<T> newArray = new GenericList<T>(new T[0]);
+            for (int i = 0; i < firstItem.initialList.Length; i++)
+            {
+                newArray.Add(firstItem.initialList[i]);
+            }
 
-        //public T[] Zipper(T[] firstItem, T[] secondItem)
+            for (int i = 0; i < secondItem.initialList.Length; i++)
+            {
+                newArray.Add(secondItem.initialList[i]);
+            }
+            return newArray;
+        }
+    
+        public static GenericList<T> operator -(GenericList<T> firstItem, GenericList<T> secondItem)
+        {
+            GenericList<T> newArray = new GenericList<T>(new T[0]);
+            newArray += firstItem;
+            for (int i = 0; i < secondItem.initialList.Length; i++)
+            {
+                newArray.Remove(secondItem.initialList[i]);
+            }
+            return newArray;
+        }
+
+        //public T[] Zip(T[] firstItem, T[] secondItem)
         //{
 
         //    T[] newArray = new T[Math.Min(firstItem.Length, secondItem.Length)];
@@ -59,6 +78,7 @@ namespace CustomListClass
         //}
 
         public void Remove(T itemToRemove)
+
         {
             int counter = 0;
             T[] newArray = new T[initialList.Length - 1];
@@ -86,14 +106,14 @@ namespace CustomListClass
 
 
 
-        IEnumerator<T[]> GetEnumerator()
-        {
-            Console.WriteLine("T[].GetEnumerator");
-            for (int i = 0; i < initialList.Count(); i++)
-            {
-                yield return initialList;
-            }
-        }
+        //IEnumerator<T[]> GetEnumerator()
+        //{
+        //    Console.WriteLine("T[].GetEnumerator");
+        //    for (int i = 0; i < initialList.Count(); i++)
+        //    {
+        //        yield return initialList;
+        //    }
+        //}
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
