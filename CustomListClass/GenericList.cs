@@ -111,13 +111,16 @@ namespace CustomListClass
 
         public override string ToString()
         {
-            string newString = "";
 
-            foreach(var value in initialList)
+            string newString = "";
+            for (int i = 0; i < initialList.Length; i++)
             {
-                newString += value;
+                newString += initialList[i];
             }
+
             return newString;
+
+        
         }
 
 
