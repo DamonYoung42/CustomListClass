@@ -74,7 +74,7 @@ namespace CustomListClass
         {
             GenericList<T> newList = new GenericList<T>(new T[0]);
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < Math.Max(Count, secondItem.Count); i++)
             {
                 if (i < Count)
                 {

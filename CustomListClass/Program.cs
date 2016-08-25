@@ -91,9 +91,20 @@ namespace CustomListClass
             GenericList<int> zipList4 = new GenericList<int>(new int[] { 6, 7, 8, 9, 10 });
 
             Console.WriteLine(zipList1);
+            foreach (var item in zipList1)
+            {
+                Console.WriteLine("Ziplist1: " + item);
+            }
             Console.WriteLine(zipList2);
+            foreach (var item in zipList2)
+            {
+                Console.WriteLine("Ziplist2: " + item);
+            }
             zipList1.Zip(zipList2);
-            Console.WriteLine(zipList1);
+            foreach (var item in zipList1)
+            {
+                Console.WriteLine("Zipped Ziplist1: " + item);
+            }
 
 
             Console.WriteLine(zipList3);
