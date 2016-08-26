@@ -10,7 +10,6 @@ namespace CustomListClass
     public class GenericList<T> : IEnumerable<T>
     {
         T[] initialList;
-        int count;
 
         public int Count
         {
@@ -18,7 +17,7 @@ namespace CustomListClass
             {
                 return initialList.Length;
             }
-            
+
         }
 
         public GenericList(T[] array)
@@ -56,7 +55,7 @@ namespace CustomListClass
 
             return newArray;
         }
-    
+
         public static GenericList<T> operator -(GenericList<T> firstItem, GenericList<T> secondItem)
         {
             GenericList<T> newArray = new GenericList<T>(new T[0]);
@@ -112,20 +111,54 @@ namespace CustomListClass
         public override string ToString()
         {
 
-            string newString = "";
-            for (int i = 0; i < initialList.Length; i++)
-            {
-                newString += initialList[i];
-            }
+            return string.Join(",", initialList);
 
-            return newString;
 
-        
         }
 
+        public void Sort()
+        {
+            //Working selection sort algorithm
+            //int index = 0;
+            //for (int i = 0; i < initialList.Length - 1; i++)
+            //{
+            //    index = i;
+            //    for (int j = i + 1; j < initialList.Length; j++)
+            //    {
+            //        if (Comparer.Default.Compare(initialList[j], initialList[index]) < 0)
+            //        {
+            //            index = j;
+            //        }
 
+            //    }
+            //    Swap(ref initialList[i], ref initialList[index]);
+            //}
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+            //working insert sort algorithm
+            int j = 0;
+            T temp;
+            for (int i = 1; i < initialList.Length; i++)
+            {
+                j = i;
+                temp = initialList[i];
+                while ((j > 0) && ((Comparer.Default.Compare(initialList[j-1], temp)) > 0))
+                {
+                    initialList[j] = initialList[j - 1];
+                    j = j - 1;
+                }
+                initialList[j] = temp;
+            }
+
+        }
+
+        public void Swap(ref T itemA, ref T itemB)
+        {
+            T temp = itemA;
+            itemA = itemB;
+            itemB = temp;
+        }
+
+            IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             for (int i = 0; i < Count; i++)
             {
@@ -141,5 +174,6 @@ namespace CustomListClass
                 yield return initialList[i];
             }
         }
+
     }
 }

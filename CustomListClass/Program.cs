@@ -51,57 +51,57 @@ namespace CustomListClass
            
             }
 
-            Console.WriteLine("ToString function with string array");
-            foreach (var item in stringList)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine("Calling ToString(), with Count property");
+            Console.WriteLine(stringList.Count + " " + stringList.ToString());
+
             Console.ReadKey();
-            Console.WriteLine("ToString function with integer array");
+            Console.WriteLine("Calling ToString(), with Count property");
             GenericList<int> numbersOriginal= new GenericList<int>(new int[] { 1, 2, 3 });
-            Console.WriteLine(numbersOriginal.Count + " " + numbersOriginal);
+            Console.WriteLine(numbersOriginal.Count + " " + numbersOriginal.ToString());
 
             Console.ReadKey();
             Console.WriteLine("\nOperator + overload");
-            GenericList<int> numbers1 = new GenericList<int>(new int[] { 1, 2, 3, 4, 5 });
-            GenericList<int> numbers2 = new GenericList<int>(new int[] { 6, 7, 8, 9, 10 });
+            GenericList<int> numbers1 = new GenericList<int>(new int[] { 1, 2, 3});
+            GenericList<int> numbers2 = new GenericList<int>(new int[] { 4,5,6, 7, 8, 9, 10 });
             GenericList<int> numbers3 = numbers1 + numbers2;
-
+            Console.WriteLine("\nFirst List");
             foreach (var item in numbers1)
             {
                 Console.WriteLine(item);
             }
-            Console.WriteLine();
 
+            Console.WriteLine("\nSecond List");
             foreach (var item in numbers2)
             {
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine("\n+ List");
             Console.WriteLine();
             foreach (var item in numbers3)
             {
                 Console.WriteLine(item);
             }
             Console.ReadKey();
-            Console.WriteLine("\nOperator - overload");
+            Console.WriteLine("\nOperator + overload");
 
             GenericList<string> strings1 = new GenericList<string>(new string[] { "hello", "goodbye", "good morning", "good night"});
             GenericList<string> strings2 = new GenericList<string>(new string[] { "baseball", "basketball"});
             GenericList<string> strings3 = strings1 + strings2;
 
-            Console.WriteLine("List A");
+            Console.WriteLine("\nList A");
             foreach (var item in strings1)
             {
                 Console.WriteLine(item);
             }
-            Console.WriteLine("List B");
+            Console.WriteLine("\nList B");
 
             foreach (var item in strings2)
             {
                 Console.WriteLine(item);
             }
-            Console.WriteLine("Combined List");
+
+            Console.WriteLine("\n+ List");
             foreach (var item in strings3)
             {
                 Console.WriteLine(item);
@@ -139,12 +139,37 @@ namespace CustomListClass
                 Console.WriteLine("Zipped Ziplist1: " + item);
             }
 
-
+            Console.WriteLine("\nZipped Integer List");
+            
             Console.WriteLine(zipList3);
             Console.WriteLine(zipList4);
             zipList3.Zip(zipList4);
             Console.WriteLine(zipList3);
-            Console.ReadKey();
+            Console.ReadLine();
+
+
+            Console.WriteLine("\nList Sorting");
+
+            GenericList<int> sortList = new GenericList<int>(new int[] {3,4,1,5,2});
+            Console.WriteLine(sortList);
+            sortList.Sort();
+            Console.WriteLine(sortList);
+            Console.ReadLine();
+
+            GenericList<string> sortStringList = new GenericList<string>(new string[] { "Tommy", "Rachel","Isaac", "Brock", "Glen", "Jacob", "Dylan" });
+            Console.WriteLine(sortStringList);
+            sortStringList.Sort();
+            Console.WriteLine(sortStringList);
+            Console.ReadLine();
+
+
+            GenericList<string> sortStringList2 = new GenericList<string>(new string[] { "Tommy", "1", "Isaac", "3", "Glen", "500", "Dylan" });
+            Console.WriteLine(sortStringList2);
+            sortStringList2.Sort();
+            Console.WriteLine(sortStringList2);
+            Console.ReadLine();
+
+
         }
     }
 }
