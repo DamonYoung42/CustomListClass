@@ -119,35 +119,35 @@ namespace CustomListClass
         public void Sort()
         {
             //Working selection sort algorithm
-            //int index = 0;
-            //for (int i = 0; i < initialList.Length - 1; i++)
-            //{
-            //    index = i;
-            //    for (int j = i + 1; j < initialList.Length; j++)
-            //    {
-            //        if (Comparer.Default.Compare(initialList[j], initialList[index]) < 0)
-            //        {
-            //            index = j;
-            //        }
+            int index = 0;
+            for (int i = 0; i < Count - 1; i++)
+            {
+                index = i;
+                for (int j = i + 1; j < Count; j++)
+                {
+                    if (Comparer.Default.Compare(initialList[j], initialList[index]) < 0)
+                    {
+                        index = j;
+                    }
 
-            //    }
-            //    Swap(ref initialList[i], ref initialList[index]);
-            //}
+                }
+                Swap(ref initialList[i], ref initialList[index]);
+            }
 
             //working insert sort algorithm
-            int j = 0;
-            T temp;
-            for (int i = 1; i < initialList.Length; i++)
-            {
-                j = i;
-                temp = initialList[i];
-                while ((j > 0) && ((Comparer.Default.Compare(initialList[j-1], temp)) > 0))
-                {
-                    initialList[j] = initialList[j - 1];
-                    j = j - 1;
-                }
-                initialList[j] = temp;
-            }
+            //int j = 0;
+            //T temp;
+            //for (int i = 1; i < Count; i++)
+            //{
+            //    j = i;
+            //    temp = initialList[i];
+            //    while ((j > 0) && ((Comparer.Default.Compare(initialList[j-1], temp)) > 0))
+            //    {
+            //        initialList[j] = initialList[j - 1];
+            //        j = j - 1;
+            //    }
+            //    initialList[j] = temp;
+            //}
 
         }
 
